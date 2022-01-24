@@ -1,0 +1,79 @@
+
+<div class="container content mt-3" >
+    <div class="text-center">
+        <h3>Lista de articulos:</h3>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let articulo of art" >
+             {{articulo.nombre}}, {{articulo.descripcion}}, {{articulo.departamento}},{{articulo.pu}}.
+
+            <span class="text-danger fw-bold blink ms-2" *ngIf="articulo.pu < 25">
+                Producto en rebaja!
+            </span>
+        </li>
+    </ul>
+</div>
+<div class="text-center">
+    <h4>Agregar Articulos:</h4>
+</div>
+<div class="container content">
+    <div class="row">
+        <label class="col-sm-4 col-form-label fw-bold text-end" for="artName">Articulos:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" placeholder="agregar nombre" id="artName"
+             [(ngModel)]="nomA"  
+            />
+            <input class="form-control" type="text" placeholder="agregar descripcion" id="artName"
+            [(ngModel)]="desA"  
+           />
+            <input class="form-control" type="text" placeholder="agregar departamento" id="artName"
+             [(ngModel)]="depA"  
+            />
+            <input class="form-control" type="text" placeholder="agregar precio" id="artName"
+             [(ngModel)]="pu"  
+            />
+        </div>
+        
+        <div class="col-sm-2">
+            <button class="btn btn-outline-primary btn-sm" (click)="agregarA()">Agregar</button>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <h3>Lista de Departamentos:</h3>
+</div>
+
+<div class="principal">
+    <div class="text-center mt-2">
+        <h5>Departamentos:</h5>
+    </div>
+
+    <ol>
+        <li *ngFor="let nomDepartamento of departamento; let i = index">
+            <button class="btn btn-outline-info" (click)="eliminarD(i)">Del</button>
+            {{nomDepartamento}}.
+        </li>
+    </ol>
+</div>
+<div class="text-center">
+    <h4>Agregar departamentos :</h4>
+</div>
+<div class="container content">
+    <div class="row">
+        <label class="col-sm-4 col-form-label fw-bold text-end" for="filmName">Departamento:</label>
+        <div class="col-sm-6">
+            <input class="form-control" type="text" placeholder="agregar nuevo departamento" id="depName"
+             [(ngModel)]="nomDepartamento"  
+             (keyup.enter)="enter(departamento)"/>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-outline-primary btn-sm" (click)="agregarD()">Agregar</button>
+        </div>
+    </div>
+</div>
+<br>
+<div class="mb-3 text-center">
+    <button class="btn btn-outline-success" (click)="irHome()">Ir a home!</button>
+</div>
